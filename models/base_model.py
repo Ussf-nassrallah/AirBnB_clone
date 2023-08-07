@@ -6,19 +6,34 @@
 import uuid
 import datetime
 
+
 class BaseModel:
     '''
         class BaseModel that defines all common attributes/methods
             for other classes
     '''
-    def __init__(self):
+
+    def __init__(self, *args, **kwargs):
         ''' Public instance attributes '''
-        # create a unique id for each BaseModel
-        self.id = str(uuid.uuid4())
-        # the current datetime when an instance is created
-        self.created_at = datetime.datetime.now()
-        # the current datetime when an instance is updated 
-        self.updated_at = datetime.datetime.now()
+        if (len(kwargs) != 0):
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    setattr(self, key, value)
+            kwargs['created_at'] = datetime.datetime.strptime(
+                kwargs['created_at'],
+                "%Y-%m-%dT%H:%M:%S.%f"
+            )
+            kwargs['updated_at'] = datetime.datetime.strptime(
+                kwargs['updated_at'],
+                "%Y-%m-%dT%H:%M:%S.%f"
+            )
+        else:
+            # create a unique id for each BaseModel
+            self.id = str(uuid.uuid4())
+            # the current datetime when an instance is created
+            self.created_at = datetime.datetime.now()
+            # the current datetime when an instance is updated
+            self.updated_at = datetime.datetime.now()
 
     def save(self):
         '''
