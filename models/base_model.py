@@ -5,6 +5,7 @@
 
 import uuid
 import datetime
+import models
 
 
 class BaseModel:
@@ -34,6 +35,8 @@ class BaseModel:
             self.created_at = datetime.datetime.now()
             # the current datetime when an instance is updated
             self.updated_at = datetime.datetime.now()
+            # link BaseModel to FileStorage by using the variable storage
+            models.storage.new(self)
 
     def save(self):
         '''
