@@ -16,19 +16,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         ''' Public instance attributes '''
-        if (len(kwargs) != 0):
-            for key, value in kwargs.items():
-                if key != '__class__':
-                    setattr(self, key, value)
-            kwargs['created_at'] = datetime.datetime.strptime(
-                kwargs['created_at'],
-                "%Y-%m-%dT%H:%M:%S.%f"
-            )
-            kwargs['updated_at'] = datetime.datetime.strptime(
-                kwargs['updated_at'],
-                "%Y-%m-%dT%H:%M:%S.%f"
-            )
-        else:
+        if (len(kwargs) == 0):
             # create a unique id for each BaseModel
             self.id = str(uuid.uuid4())
             # the current datetime when an instance is created
@@ -37,6 +25,18 @@ class BaseModel:
             self.updated_at = datetime.datetime.now()
             # link BaseModel to FileStorage by using the variable storage
             models.storage.new(self)
+        else:
+            kwargs['created_at'] = datetime.datetime.strptime(
+                kwargs['created_at'],
+                "%Y-%m-%dT%H:%M:%S.%f"
+            )
+            kwargs['updated_at'] = datetime.datetime.strptime(
+                kwargs['updated_at'],
+                "%Y-%m-%dT%H:%M:%S.%f"
+            )
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    setattr(self, key, value)
 
     def save(self):
         '''
