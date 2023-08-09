@@ -6,7 +6,6 @@ import cmd
 
 
 class HBNBCommand(cmd.Cmd):
-    intro = "Welcome to My Command Line App! Type 'help' to see the list of available commands."
     prompt = "(hbnb) "
 
     def do_quit(self, line):
@@ -15,6 +14,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """exit the program on End-of-File input (Ctrl+D or Ctrl+Z)"""
+        print()
         return True
 
 
