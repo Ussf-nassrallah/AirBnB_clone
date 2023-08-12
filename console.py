@@ -15,6 +15,10 @@ class HBNBCommand(cmd.Cmd):
         'BaseModel', 'User', 'State', 'Review', 'Place', 'City', 'Amenity'
     ]
 
+    def emptyline(self):
+        '''empty line command'''
+        pass
+
     def do_quit(self, line):
         """Quit command to exit the program"""
         return True
