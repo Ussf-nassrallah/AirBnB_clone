@@ -67,7 +67,9 @@ class TestBaseModel(unittest.TestCase):
         ''' checks if created_at equal updated_at '''
         obj = BaseModel()
         # first let's checks new_model date and time
-        self.assertNotEqual(self.new_model.created_at, self.new_model.updated_at)
+        self.assertNotEqual(
+                self.new_model.created_at, self.new_model.updated_at
+                )
         # second let's checks our obj
         self.assertNotEqual(obj.created_at, obj.updated_at)
 
