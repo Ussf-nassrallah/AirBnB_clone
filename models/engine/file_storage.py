@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-  model thats contain a FileStorage class that
+  model that contains a FileStorage class that
     serializes instances to a JSON file and
     deserializes JSON file to instances
 '''
@@ -16,22 +16,22 @@ import os
 
 
 class FileStorage:
-    ''' represent FileStorage class '''
+    ''' Represents the FileStorage class '''
     __file_path = 'file.json'
     __objects = {}
 
     def all(self):
-        ''' function thats returns the dictionary __objects '''
+        ''' Returns the dictionary __objects '''
         return self.__objects
 
     def new(self, obj):
-        ''' sets in __objects the new obj '''
+        ''' Sets in __objects the new obj '''
         if obj:
             key = '{}.{}'.format(obj.__class__.__name__, obj.id)
             self.__objects[key] = obj
 
     def save(self):
-        ''' serializes __objects to the JSON file '''
+        ''' Serializes __objects to the JSON file '''
         filename = self.__file_path
         data = {}
         for key, value in self.__objects.items():
@@ -40,7 +40,7 @@ class FileStorage:
             json.dump(data, file)
 
     def reload(self):
-        ''' deserializes the JSON file to __objects '''
+        ''' Deserializes the JSON file to __objects '''
         filename = self.__file_path
         self.__objects = {}
         try:
@@ -49,4 +49,18 @@ class FileStorage:
         except Exception as e:
             return
         for key, value in data.items():
-            self.__objects[key] = base_model.BaseModel(**value)
+            class_name, obj_id = key.split('.')
+            if class_name == 'BaseModel':
+                self.__objects[key] = BaseModel(**value)
+            elif class_name == 'User':
+                self.__objects[key] = User(**value)
+            elif class_name == 'State':
+                self.__objects[key] = State(**value)
+            elif class_name == 'City':
+                self.__objects[key] = City(**value)
+            elif class_name == 'Review':
+                self.__objects[key] = Review(**value)
+            elif class_name == 'Amenity':
+                self.__objects[key] = Amenity(**value)
+            elif class_name == 'Place':
+                self.__objects[key] = Place(**value)
