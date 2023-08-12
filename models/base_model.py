@@ -59,8 +59,8 @@ class BaseModel:
             returns a dictionary containing all keys/values
               of __dict__ of the instance
         '''
-        dct = dict(self.__dict__)
+        dct = self.__dict__.copy()
         dct['__class__'] = self.__class__.__name__
-        dct['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        dct['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        dct['created_at'] = self.created_at.isoformat()
+        dct['updated_at'] = self.updated_at.isoformat()
         return dct
