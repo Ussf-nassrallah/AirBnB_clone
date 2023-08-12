@@ -22,7 +22,7 @@ from models.review import Review
 def parser(input_string):
     curly_match = re.search(r"\{(.*?)\}", input_string)
     bracket_match = re.search(r"\[(.*?)\]", input_string)
-    
+
     if curly_match is None:
         if bracket_match is None:
             return [item.strip(",") for item in split(input_string)]
