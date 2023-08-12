@@ -60,7 +60,7 @@ class BaseModel:
               of __dict__ of the instance
         '''
         dct = dict(self.__dict__)
-        dct['__class__'] = type(self).__name__
+        dct['__class__'] = self.__class__.__name__
         dct['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         dct['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         return dct
