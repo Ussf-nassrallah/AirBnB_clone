@@ -19,22 +19,24 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-def parser(arg):
-    curly_braces = re.search(r"\{(.*?)\}", arg)
-    brackets = re.search(r"\[(.*?)\]", arg)
-    if curly_braces is None:
-        if brackets is None:
-            return [i.strip(",") for i in split(arg)]
+def parser(input_string):
+    curly_match = re.search(r"\{(.*?)\}", input_string)
+    bracket_match = re.search(r"\[(.*?)\]", input_string)
+    
+    if curly_match is None:
+        if bracket_match is None:
+            return [item.strip(",") for item in split(input_string)]
         else:
-            lexer = split(arg[:brackets.span()[0]])
-            retl = [i.strip(",") for i in lexer]
-            retl.append(brackets.group())
-            return retl
+            lexer = split(input_string[:bracket_match.span()[0]])
+            result_list = [item.strip(",") for item in lexer]
+            result_list.append(bracket_match.group())
+            return result_list
     else:
-        lexer = split(arg[:curly_braces.span()[0]])
-        retl = [i.strip(",") for i in lexer]
-        retl.append(curly_braces.group())
-        return retl
+        lexer = split(input_string[:curly_match.span()[0]])
+        result_list = [item.strip(",") for item in lexer]
+        result_list.append(curly_match.group())
+        return result_list
+
 
 
 class HBNBCommand(cmd.Cmd):
