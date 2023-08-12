@@ -8,6 +8,7 @@ from models import base_model
 import json
 import os
 
+
 class FileStorage:
     ''' represent FileStorage class '''
     __file_path = "./file.json"
@@ -38,8 +39,7 @@ class FileStorage:
         try:
             with open(filename, 'r') as file:
                 data = json.load(file)
-        except:
+        except Exception as e:
             return
         for key, value in data.items():
-            class_name = value['__class__']
             self.__objects[key] = base_model.BaseModel(**value)

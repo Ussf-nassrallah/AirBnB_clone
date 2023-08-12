@@ -11,6 +11,7 @@ import json
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
+
 class TestFileStorage(unittest.TestCase):
     ''' represent TestFileStorage class '''
     def setUp(self):
@@ -107,5 +108,5 @@ class TestFileStorage(unittest.TestCase):
             _store = self.store
             _store.reload()
             self.assertTrue(True)
-        except:
+        except Exception as e:
             self.assertTrue(False)

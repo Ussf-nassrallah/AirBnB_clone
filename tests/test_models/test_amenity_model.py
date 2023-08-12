@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''
-    All the tests for the amenity_model are contained within this implementation.
+    All the tests for the amenity_model are contained
+      within this implementation.
 '''
 
 from models.amenity import Amenity

@@ -10,6 +10,7 @@ import time
 from io import StringIO
 import datetime
 
+
 class TestBaseModel(unittest.TestCase):
     '''
         Testing the BaseModel class.
