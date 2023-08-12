@@ -38,7 +38,6 @@ def parser(input_string):
         return result_list
 
 
-
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     own_classes = [
