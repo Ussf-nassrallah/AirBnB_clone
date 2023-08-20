@@ -1,0 +1,23 @@
+.places h1 {
+    font-size: 30px;
+}
+
+.places > .grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.places > .grid > article {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 4px;
+    border: 1px #FF5A5F solid;
+}
+
+.places > .grid > article > h2 {
+    font-size: 30px;
+    text-align: center;
+}

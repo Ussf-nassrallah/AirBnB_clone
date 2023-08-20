@@ -1,3 +1,10 @@
+/* GLOBAL */
+/* *,
+*::after,
+*::before {
+    box-sizing: border-box;
+} */
+
 /* BODY */
 body {
     margin: 0;
@@ -5,6 +12,7 @@ body {
     color: #484848;
     font-size: 14px;
     font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.6;
 }
 
 /* container */
