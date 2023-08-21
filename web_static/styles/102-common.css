@@ -1,0 +1,28 @@
+/* GLOBAL */
+/* *,
+*::after,
+*::before {
+    box-sizing: border-box;
+} */
+
+/* BODY */
+body {
+    margin: 0;
+    padding: 0;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.6;
+}
+
+/* container */
+div.container {
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+@media (max-width: 992px) {
+    div.container {
+        padding: 0 1em;
+    }
+}
